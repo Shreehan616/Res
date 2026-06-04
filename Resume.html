@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreehan M – 3D Artist & Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111111;
+    --purple: #8B2FC9;
+    --purple-bright: #A855F7;
+    --purple-light: #C084FC;
+    --purple-dim: #6B21A8;
+    --purple-glow: rgba(168,85,247,0.35);
+    --purple-bg: #1a0a2e;
+    --white: #ffffff;
+    --off-white: #e8d5ff;
+    --dot: rgba(168,85,247,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  /* Dotted background pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(139,47,201,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .resume-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    z-index: 1;
+  }
+
+  /* ── OUTER CARD ── */
+  .card {
+    background: var(--deep);
+    border: 2px solid var(--purple);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* corner pixel decorations */
+  .card::before, .card::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    background: var(--purple-bright);
+    z-index: 10;
+  }
+  .card::before { top: -2px; left: -2px; }
+  .card::after  { bottom: -2px; right: -2px; }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px 8px;
+    border-bottom: 2px dashed var(--purple-dim);
+    position: relative;
+  }
+
+  .for-hire {
+    background: var(--black);
+    border: 2px solid var(--purple-bright);
+    padding: 5px 9px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--purple-bright);
+    line-height: 1.6;
+    text-align: center;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 var(--purple-dim);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .for-hire:hover { transform: rotate(0deg) scale(1.05); box-shadow: 5px 5px 0 var(--purple); }
+
+  .top-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 18px;
+    color: var(--purple-bright);
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px var(--purple-glow), 2px 2px 0 var(--purple-dim);
+  }
+
+  .age-badge {
+    text-align: right;
+  }
+  .age-badge .state-icon {
+    width: 28px; height: 34px;
+    fill: var(--purple-bright);
+    display: block;
+    margin-left: auto;
+    margin-bottom: 2px;
+    filter: drop-shadow(0 0 6px var(--purple-glow));
+  }
+  .age-badge span {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7.5px;
+    color: var(--purple-bright);
+    line-height: 1.5;
+  }
+
+  /* ── SKILLS BANNER ── */
+  .skills-banner {
+    background: var(--purple-bg);
+    border-top: 1.5px solid var(--purple);
+    border-bottom: 1.5px solid var(--purple);
+    padding: 7px 12px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .skill-pill {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    color: var(--purple-light);
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+    border-right: 1.5px solid var(--purple-dim);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .skill-pill:last-child { border-right: none; }
+  .skill-pill:hover { color: var(--white); }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px 18px 14px;
+    position: relative;
+    min-height: 190px;
+  }
+
+  .hero-left { flex: 1; }
+
+  .hero-intro {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--off-white);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--purple-bright);
+    line-height: 1.15;
+    text-shadow: 0 0 20px var(--purple-glow), 3px 3px 0 var(--purple-dim);
+    margin-bottom: 16px;
+  }
+
+  /* Name Box */
+  .name-box {
+    display: inline-block;
+    background: var(--black);
+    border: 2px solid var(--purple-bright);
+    padding: 6px 14px 8px;
+    position: relative;
+    box-shadow: 3px 3px 0 var(--purple-dim);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .name-box:hover { box-shadow: 5px 5px 0 var(--purple); transform: translate(-1px,-1px); }
+  /* pixel corners on name box */
+  .name-box::before, .name-box::after {
+    content: '';
+    position: absolute;
+    width: 6px; height: 6px;
+    background: var(--purple-bright);
+  }
+  .name-box::before { top: -2px; left: -2px; }
+  .name-box::after  { bottom: -2px; right: -2px; }
+
+  .name-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    color: var(--purple-light);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .name-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10.5px;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px var(--purple-glow);
+  }
+
+  /* Hero Right – photo area */
+  .hero-right {
+    width: 155px;
+    height: 165px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Purple glow circle */
+  .photo-glow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 130px; height: 130px;
+    background: radial-gradient(circle at 55% 45%, #9333EA 0%, #6B21A8 45%, transparent 72%);
+    border-radius: 50%;
+    filter: blur(4px);
+  }
+
+  /* Placeholder silhouette */
+  .photo-placeholder {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 120px; height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .photo-placeholder svg {
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 12px rgba(168,85,247,0.6));
+  }
+
+  /* Decorative dots */
+  .deco-dot {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid var(--purple-bright);
+    opacity: 0.8;
+  }
+  .deco-dot-1 { width: 18px; height: 18px; top: 12px; right: 125px; }
+  .deco-dot-2 { width: 12px; height: 12px; bottom: 20px; right: 0; background: var(--purple-bright); border: none; }
+
+  /* curved arrow deco */
+  .deco-arrow {
+    position: absolute;
+    bottom: 42px; left: 148px;
+    font-size: 24px;
+    color: var(--purple-dim);
+    opacity: 0.7;
+    transform: scaleX(-1);
+  }
+
+  /* ── DIVIDER (dashed) ── */
+  .divider-dashed {
+    border: none;
+    border-top: 1.5px dashed var(--purple-dim);
+    margin: 0;
+  }
+
+  /* ── CONTACT + SINCE ── */
+  .info-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    border-bottom: 1.5px dashed var(--purple-dim);
+  }
+
+  .contact-col {
+    padding: 16px 18px;
+    border-right: 1.5px dashed var(--purple-dim);
+  }
+  .section-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px var(--purple-glow);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--off-white);
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--purple-bright); }
+  .contact-item a { color: inherit; text-decoration: none; }
+  .contact-icon {
+    width: 20px; height: 20px;
+    background: var(--purple-dim);
+    border: 1px solid var(--purple-bright);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+
+  .since-col {
+    padding: 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+  }
+  .since-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .since-year {
+    background: var(--purple);
+    border: 2px solid var(--purple-bright);
+    border-radius: 10px;
+    padding: 8px 18px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 22px;
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    box-shadow: 0 0 16px var(--purple-glow), inset 0 0 10px rgba(255,255,255,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .since-year:hover { transform: scale(1.05); box-shadow: 0 0 26px var(--purple-glow); }
+
+  /* ── SCISSORS DIVIDER ── */
+  .scissors-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    gap: 0;
+    border-bottom: 1.5px dashed var(--purple-dim);
+  }
+  .scissors-icon {
+    color: var(--purple-bright);
+    font-size: 14px;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+  .scissors-line {
+    flex: 1;
+    border-top: 1.5px dashed var(--purple-dim);
+  }
+
+  /* ── BOTTOM GRID ── */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .edu-col {
+    padding: 16px 18px;
+    border-right: 1.5px dashed var(--purple-dim);
+    border-bottom: 1.5px dashed var(--purple-dim);
+  }
+  .edu-item {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 2px solid var(--purple-dim);
+    transition: border-color 0.2s;
+  }
+  .edu-item:hover { border-color: var(--purple-bright); }
+  .edu-level {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--off-white);
+    margin-bottom: 1px;
+  }
+  .edu-school {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--purple-bright);
+    margin-bottom: 1px;
+  }
+  .edu-years {
+    font-size: 11px;
+    color: var(--purple-light);
+  }
+
+  /* Software col (right top) */
+  .software-col {
+    padding: 14px 14px 10px;
+    border-bottom: 1.5px dashed var(--purple-dim);
+    display: flex;
+    flex-direction: column;
+  }
+  .software-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--purple-bright);
+    letter-spacing: 3px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+  }
+  .software-grid-wrapper {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .software-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .sw-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--purple-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+  }
+  .sw-icon:hover {
+    border-color: var(--purple-bright);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px var(--purple-glow);
+  }
+  .sw-icon img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+  }
+
+  /* Languages col */
+  .lang-col {
+    padding: 14px 18px;
+    border-right: 1.5px dashed var(--purple-dim);
+  }
+  .lang-list {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--off-white);
+    line-height: 1.8;
+  }
+
+  /* Philosophy col */
+  .philosophy-col {
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .philosophy-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--purple-bright);
+    letter-spacing: 1px;
+    line-height: 1.6;
+  }
+  .philosophy-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--off-white);
+    line-height: 1.5;
+  }
+
+  /* ── BOTTOM CORNER DECORATIONS ── */
+  .bottom-border {
+    border-top: 2px dashed var(--purple-dim);
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--purple-dim) 0, var(--purple-dim) 6px,
+      transparent 6px, transparent 14px
+    );
+  }
+
+  /* ── SOFTWARE SECTION LAYOUT FIX ── */
+  .right-col-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Scrolling skills banner animation */
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 8px var(--purple-glow); }
+    50% { text-shadow: 0 0 18px var(--purple-bright), 0 0 30px var(--purple-glow); }
+  }
+  .hero-title { animation: pulse-glow 3s ease-in-out infinite; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 500px) {
+    body { padding: 10px; }
+    .hero-title { font-size: 22px; }
+    .top-title { font-size: 14px; }
+    .sw-icon { width: 40px; height: 40px; }
+    .sw-icon img { width: 30px; height: 30px; }
+    .since-year { font-size: 18px; padding: 6px 12px; }
+  }
+
+  /* ── HOVER EFFECTS ── */
+  .card { transition: box-shadow 0.3s; }
+  .card:hover { box-shadow: 0 0 40px rgba(139,47,201,0.2); }
+</style>
+</head>
+<body>
+
+<div class="resume-wrapper">
+<div class="card">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="for-hire">For<br>Hire</div>
+    <div class="top-title">resume</div>
+    <div class="age-badge">
+      <!-- Maharashtra silhouette approximation -->
+      <svg class="state-icon" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10,5 L50,5 L55,20 L52,35 L48,42 L40,50 L30,65 L20,50 L12,42 L8,30 L5,18 Z" />
+      </svg>
+      <span>20<br>Years Old</span>
+    </div>
+  </div>
+
+  <!-- SKILLS BANNER -->
+  <div class="skills-banner">
+    <span class="skill-pill">3D Modelling</span>
+    <span class="skill-pill">Environment Design</span>
+    <span class="skill-pill">Graphic Design</span>
+    <span class="skill-pill">Video Editing</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-intro">I'm a</div>
+      <div class="hero-title">3D Artist &amp;<br>Graphic<br>Designer</div>
+      <div class="name-box">
+        <span class="name-label">MY NAME IS</span>
+        <span class="name-value">SHREEHAN M</span>
+      </div>
+    </div>
+
+    <div class="hero-right"></div>
+  </div>
+
+  <hr class="divider-dashed">
+
+  <!-- CONTACT + SINCE -->
+  <div class="info-row">
+    <div class="contact-col">
+      <div class="section-heading">Contact me on</div>
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <a href="mailto:shreehanmuth@gmail.com">shreehanmuth@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">in</div>
+        <a href="https://www.linkedin.com/in/shreehan-m" target="_blank">linkedin.com/in/shreehan-m</a>
+      </div>
+    </div>
+    <div class="since-col">
+      <div class="since-label">Designing<br>Since</div>
+      <div class="since-year">2023</div>
+    </div>
+  </div>
+
+  <!-- SCISSORS DIVIDER -->
+  <div class="scissors-row">
+    <span class="scissors-icon">✂</span>
+    <div class="scissors-line"></div>
+  </div>
+
+  <!-- BOTTOM GRID -->
+  <div class="bottom-grid">
+
+    <!-- Education -->
+    <div class="edu-col">
+      <div class="section-heading">Education</div>
+      <div class="edu-item">
+        <div class="edu-level">Higher Secondary (HSC)</div>
+        <div class="edu-school">Lechatelier School</div>
+        <div class="edu-years">2021–2023</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-level">Undergraduate</div>
+        <div class="edu-school">Sethu Institute of<br>Technology</div>
+        <div class="edu-years">2023–2027</div>
+      </div>
+    </div>
+
+    <!-- Software (right, top half) -->
+    <div class="right-col-wrapper">
+      <div class="software-col" style="position:relative; padding-left:14px; padding-right:48px;">
+        <span class="software-label">Softwares</span>
+        <div class="software-grid-wrapper">
+          <div class="software-row">
+            <!-- Blender -->
+            <div class="sw-icon" title="Blender">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender">
+            </div>
+            <!-- Unreal Engine -->
+            <div class="sw-icon" title="Unreal Engine">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/UE_Logo_Black_Centered.svg" alt="Unreal Engine" style="filter:invert(1);">
+            </div>
+</div>
+          <div class="software-row">
+            <!-- DaVinci Resolve -->
+            <div class="sw-icon" title="DaVinci Resolve" style="background:#171717;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg" alt="DaVinci Resolve">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="lang-col" style="border-right:none; border-bottom: 1.5px dashed var(--purple-dim);">
+        <div class="section-heading">Languages</div>
+        <div class="lang-list">Tamil, English, Hindi</div>
+      </div>
+
+      <!-- Philosophy -->
+      <div class="philosophy-col">
+        <div class="philosophy-title">MY PHILOSOPHY</div>
+        <div class="philosophy-text">Creating immersive digital experiences through design, storytelling, and 3D art.</div>
+      </div>
+    </div>
+
+  </div><!-- end bottom-grid -->
+
+  <!-- Bottom decorative border -->
+  <div class="bottom-border"></div>
+
+</div><!-- end card -->
+</div><!-- end wrapper -->
+
+<script>
+  // Subtle pixel glitch effect on name box
+  const nameBox = document.querySelector('.name-box');
+  setInterval(() => {
+    if (Math.random() > 0.93) {
+      nameBox.style.transform = `translate(${(Math.random()-0.5)*3}px, 0)`;
+      setTimeout(() => nameBox.style.transform = '', 80);
+    }
+  }, 1200);
+
+  // Staggered entrance animation
+  const els = document.querySelectorAll('.edu-item, .contact-item, .sw-icon');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  els.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(10px)';
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    obs.observe(el);
+  });
+</script>
+
+</body>
+</html>
